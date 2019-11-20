@@ -12,14 +12,18 @@ namespace mvcWeb.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private IBookRepo _bookRepo;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IBookRepo bookRepo)
         {
             _logger = logger;
+            _bookRepo = bookRepo;
         }
 
         public IActionResult Index()
         {
+            var numBook = _bookRepo.GetBookNumber();
+
             return View();
         }
 
