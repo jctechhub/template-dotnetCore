@@ -41,7 +41,7 @@ namespace mvcWeb
             services.AddControllersWithViews();
 
             services.AddOptions();
-
+            services.AddHttpClient(); //INJECT the httpclient here
             //NOTE: Following is .netcore2 way, not in use for .netcore3
             //var builder = new ContainerBuilder();
             ////builder.RegisterType<BookRepo>().As<IBookRepo>();
