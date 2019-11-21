@@ -1,0 +1,7 @@
+Steps taken to generate Database: 
+
+1st time: 
+Scaffold-DbContext "Server=(local);Database=Northwind;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models 
+
+when db has changes, run the following again. 
+Scaffold-DbContext "Server=(local);Database=Northwind;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -force
