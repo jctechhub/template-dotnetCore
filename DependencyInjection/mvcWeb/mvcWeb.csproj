@@ -9,4 +9,9 @@
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="5.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\mvcWeb.Repo\mvcWeb.Repo.csproj" />
+    <ProjectReference Include="..\mvcWeb.Utilities\mvcWeb.Utilities.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using mvcWeb.Models;
+using mvcWeb.Repo.Data.Repository.IRepository;
 
 namespace mvcWeb.Controllers
 {
@@ -15,11 +16,13 @@ namespace mvcWeb.Controllers
         private IHttpClientFactory _httFactory;
         private readonly ILogger<HomeController> _logger;
         private IBookRepo _bookRepo;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public HomeController(ILogger<HomeController> logger, IHttpClientFactory httpfactory, IBookRepo bookRepo)
+        public HomeController(ILogger<HomeController> logger, IHttpClientFactory httpfactory, IBookRepo bookRepo, IUnitOfWork unitOfWork)
         {
             _logger = logger;
             _bookRepo = bookRepo;
+            _unitOfWork = unitOfWork;
             _httFactory = httpfactory;
         }
 
@@ -33,6 +36,10 @@ namespace mvcWeb.Controllers
                 var output = await client.GetStringAsync("http://regres.in/api/users?page=2");
                 ViewBag.Output = output;
             }
+
+            var list = _unitOfWork.Category.GetCategoryListForDropDown();
+            ViewBag.FirstItem = list.First().Text + " " + list.First().Value;
+
 
             return View();
         }
