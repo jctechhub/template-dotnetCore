@@ -1,2 +1,2 @@
 # template-dotnetCore
-sample templates for various projects
+this is a sample templates for various projects
